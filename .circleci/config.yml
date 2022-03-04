@@ -9,6 +9,11 @@ jobs:
   test: 
     docker:
       - image : cimg/node:14.13.0
-  steps: 
-    - checkout
-    -run: node --version
+    steps: 
+      - checkout    /* here we are checking the code from the source control */
+      -run:
+          name: Package dependncies  // here we are just saying the name 
+          command: npm install       // and the things that your config.yml file wants to run.
+      -run:
+          name: run tests
+          command: npm run test 
